@@ -29,6 +29,8 @@ const GlobalStyles = createGlobalStyle`
 
 	* {
 		margin: 0;
+		border: 0;
+		outline: 0;
 		padding: 0;
 		box-sizing: border-box;
 	}
@@ -52,14 +54,4 @@ const GlobalStyles = createGlobalStyle`
 	}
 
 `
-const Container = styled.div`
-	height: 100vh;
-	max-width: 992px;
-	margin: 0 auto;
-	padding: 2.5rem 2rem;
-
-	display: flex;
-	flex-direction: column;
-`
-
-export { GlobalStyles, Container }
+export { GlobalStyles }
