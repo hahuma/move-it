@@ -42,7 +42,7 @@ const CountdownContainer = styled.div`
 
 	span {
 		font-size: 6.25rem;
-		margin: 0 0.25rem;
+		margin: 0 0.05rem;
 	}
 `
 
