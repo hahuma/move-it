@@ -1,5 +1,9 @@
 import styled from 'styled-components'
 
+export interface ButtonCountdownProps {
+	buttonStyle: 'start' | 'cancel'
+}
+
 const CountdownContainer = styled.div`
 	display: flex;
 	align-items: center;
@@ -42,7 +46,7 @@ const CountdownContainer = styled.div`
 	}
 `
 
-const CountdownButton = styled.button`
+const CountdownButton = styled.button<ButtonCountdownProps>`
 	width: 100%;
 	height: 5rem;
 
@@ -54,14 +58,46 @@ const CountdownButton = styled.button`
 
 	border-radius: 5px;
 
-	background: var(--blue);
+	background: ${props => {
+		if(props.buttonStyle === 'cancel') {
+			return "var(--white)"
+		} else if (props.buttonStyle === 'start') {
+			return 'var(--blue)'
+		}
+	}};
 
 	font-size: 1.25rem;
 	font-weight: 600;
-	color: var(--white);
+	color: ${props => {
+		if(props.buttonStyle === 'cancel') {
+			return "var(--title)"
+		}else if (props.buttonStyle === 'start') {
+			return 'var(--white)'
+		}
+	}};
 	transition: background-color 200ms;
-	&:hover {
-		background: var(--blue-dark);
+	&:not(:disabled):hover {
+		background: ${props => {
+		if(props.buttonStyle === 'cancel') {
+			return "var(--white)"
+		}else if (props.buttonStyle === 'start') {
+			return 'var(--blue-dark)'
+		}
+	}};
+		color: ${props => {
+		if(props.buttonStyle === 'cancel') {
+			return "var(--red)"
+		}else if (props.buttonStyle === 'start') {
+			return 'var(--white)'
+		}
+	}};
+	}
+
+	&:disabled {
+		background: var(--white);
+		color: var(--text);
+		cursor: not-allowed;
+		border-bottom: 5px solid var(--green);
 	}
 `
 

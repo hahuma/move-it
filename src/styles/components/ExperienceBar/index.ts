@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
-const ExperienceHeader = styled.header`
+export interface ExperienceBarProps {
+	currentExperience: string
+}
+
+const ExperienceHeader = styled.header<ExperienceBarProps>`
 	display: flex;
 	align-items: center;
 
@@ -20,12 +24,14 @@ const ExperienceHeader = styled.header`
 			height: 4px;
 			border-radius: 4px;
 			background: var(--green);
+			width: ${props => props.currentExperience};
 		}
 
 		.current-experience {
 			position: absolute;
 			top: 12px;
-			transform: translateX(-50%);
+			transform: ${props => `translateX(-${props.currentExperience})`};
+			left: ${props => props.currentExperience};
 		}
 	}
 `
